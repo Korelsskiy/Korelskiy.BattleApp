@@ -10,19 +10,19 @@ namespace Logics
 
         public List<IWarItem> WarItems { get; set; } = new List<IWarItem>();
 
-        public GermanTeam()
+        public GermanTeam(DBManager db)
         {
-            WarItems.AddRange(GetSquad());
+            WarItems.AddRange(GetSquad(db));
         }
-        public List<ISoldier> GetSquad()
+        public List<ISoldier> GetSquad(DBManager db)
         {
             List<ISoldier> squad = new List<ISoldier>();
             for (int i = 0; i < 8; i++)
             {
-                squad.Add(new Rifleman($"Стрелок{i}", new Rifle("Винтовка Маузера")));
+                squad.Add(new Rifleman($"{db.GermanNames[new Random().Next(0, 14)]} {db.GermanLastNames[new Random().Next(0, 14)]}", new Rifle("Винтовка Маузера")));
             }
-            squad.Add(new MashineGunner("Пулеметчик", new MashineGun("MG-34")));
-            squad.Add(new SquadLeader("Командир отделения", new PPGun("MP-40")));
+            squad.Add(new MashineGunner($"{db.GermanNames[new Random().Next(0, 14)]} {db.GermanLastNames[new Random().Next(0, 14)]}", new MashineGun("MG-34")));
+            squad.Add(new SquadLeader($"{db.GermanNames[new Random().Next(0, 14)]} {db.GermanLastNames[new Random().Next(0, 14)]}", new PPGun("MP-40")));
 
             return squad;
         }

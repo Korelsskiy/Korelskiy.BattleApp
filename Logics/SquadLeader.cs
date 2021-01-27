@@ -9,6 +9,7 @@ namespace Logics
         public string Name { get; }
 
         public int Health { get; } = 100;
+        public string Rank { get; } = "Младший сержант";
 
         public IWeapon Weapon { get; }
         public SquadLeader(string name, IWeapon weapon)

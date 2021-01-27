@@ -12,6 +12,8 @@ namespace Logics
 
         public IWeapon Weapon { get; }
 
+        public string Rank { get; } = "Рядовой стрелок";
+
         public Rifleman(string name, IWeapon weapon)
         {
             Name = name;

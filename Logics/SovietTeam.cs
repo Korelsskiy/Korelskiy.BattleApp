@@ -9,19 +9,19 @@ namespace Logics
         public string Name { get; } = "СССР";
 
         public List<IWarItem> WarItems { get; set; } = new List<IWarItem>();
-        public SovietTeam()
+        public SovietTeam(DBManager db)
         {
-            WarItems.AddRange(GetSquad());
+            WarItems.AddRange(GetSquad(db));
         }
-        public List<ISoldier> GetSquad()
+        public List<ISoldier> GetSquad(DBManager db)
         {
             List<ISoldier> squad = new List<ISoldier>();
             for (int i = 0; i < 8; i++)
             {
-                squad.Add(new Rifleman($"Стрелок{i}", new Rifle("Винтовка Мосина")));
+                squad.Add(new Rifleman($"{db.USSRNames[new Random().Next(0, 14)]} {db.USSRLastNames[new Random().Next(0, 14)]}", new Rifle("Винтовка Мосина")));
             }
-            squad.Add(new MashineGunner("Пулеметчик", new MashineGun("ДП-27")));
-            squad.Add(new SquadLeader("Командир отделения", new PPGun("ППД-40")));
+            squad.Add(new MashineGunner($"{db.USSRNames[new Random().Next(0, 14)]} {db.USSRLastNames[new Random().Next(0, 14)]}", new MashineGun("ДП-27")));
+            squad.Add(new SquadLeader($"{db.USSRNames[new Random().Next(0, 14)]} {db.USSRLastNames[new Random().Next(0, 14)]}", new PPGun("ППД-40")));
 
             return squad;
         }

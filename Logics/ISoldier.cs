@@ -7,5 +7,6 @@ namespace Logics
     public interface ISoldier : IWarItem
     {
         public int Health { get; }
+        public string Rank { get; }
     }
 }

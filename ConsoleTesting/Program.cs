@@ -13,7 +13,7 @@ namespace ConsoleTesting
             {
                 Console.WriteLine($"Команда: {item.Name}");
                 DisplayArmyInfo(item.WarItems);
-                Console.WriteLine(new string('-', 50));
+                Console.WriteLine(new string('-', 60));
             }
 
             Console.ReadKey();
@@ -22,10 +22,11 @@ namespace ConsoleTesting
 
         private static List<ITeam> GetTeams()
         {
+            DBManager db = new DBManager();
             List<ITeam> teams = new List<ITeam>
             {
-                new GermanTeam(),
-                new SovietTeam()
+                new GermanTeam(db),
+                new SovietTeam(db)
             };
 
             return teams;
@@ -35,7 +36,7 @@ namespace ConsoleTesting
         {
             foreach (ISoldier soldier in army)
             {
-                Console.WriteLine($"Боец {soldier.Name} - {soldier.Weapon.Title} [{soldier.Health}]");
+                Console.WriteLine($"{soldier.Rank} {soldier.Name} - {soldier.Weapon.Title} [{soldier.Health}]");
             }
         }
     }

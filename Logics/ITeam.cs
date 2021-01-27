@@ -8,7 +8,7 @@ namespace Logics
     {
         public string Name { get; }
         public List<IWarItem> WarItems { get; }
-        public List<ISoldier> GetSquad();
+        public List<ISoldier> GetSquad(DBManager dB);
         public void Win();
         public void Lose();
     }
