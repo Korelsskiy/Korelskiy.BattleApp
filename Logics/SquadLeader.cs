@@ -4,28 +4,27 @@ using System.Text;
 
 namespace Logics
 {
-    public class Rifleman : ISoldier
+    public class SquadLeader : ISoldier
     {
         public string Name { get; }
 
         public int Health { get; } = 100;
 
         public IWeapon Weapon { get; }
-
-        public Rifleman(string name, IWeapon weapon)
+        public SquadLeader(string name, IWeapon weapon)
         {
             Name = name;
             Weapon = weapon;
-            Health = new Random().Next(80, 120);
+            Health = new Random().Next(150, 200);
         }
         public void Destroying()
         {
-            Console.WriteLine($"{Name}: I'm killed.");
+            throw new NotImplementedException();
         }
 
         public void Shoot()
         {
-            Weapon.Shoot();
+            throw new NotImplementedException();
         }
     }
 }

@@ -4,11 +4,15 @@ using System.Text;
 
 namespace Logics
 {
-    public class MosinRifle : IWeapon
+    public class Rifle : IWeapon
     {
-        public string Title => "Винтовка Мосина";
+        public string Title { get; }
 
-        public int Damage => 9;
+        public int Damage { get; }
+        public Rifle(string title)
+        {
+            Title = title;
+        }
 
         public void Shoot()
         {

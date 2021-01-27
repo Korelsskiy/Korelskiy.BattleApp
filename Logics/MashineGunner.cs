@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Logics
 {
-    public class Rifleman : ISoldier
+    public class MashineGunner : ISoldier
     {
         public string Name { get; }
 
@@ -12,11 +12,11 @@ namespace Logics
 
         public IWeapon Weapon { get; }
 
-        public Rifleman(string name, IWeapon weapon)
+        public MashineGunner(string name, IWeapon weapon)
         {
             Name = name;
             Weapon = weapon;
-            Health = new Random().Next(80, 120);
+            Health = new Random().Next(120, 150);
         }
         public void Destroying()
         {
