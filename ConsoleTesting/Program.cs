@@ -1,4 +1,5 @@
 ﻿using Logics;
+using Logics.Units;
 using System;
 using System.Collections.Generic;
 
@@ -6,13 +7,15 @@ namespace ConsoleTesting
 {
     public class Program
     {
+        private DBManager db = new DBManager();
         static void Main(string[] args)
         {
+            List<Squad> battleTeams = GetTeams();
 
-            foreach (var item in GetTeams())
+            foreach (var item in battleTeams)
             {
                 Console.WriteLine($"Команда: {item.Name}");
-                DisplayArmyInfo(item.WarItems);
+                item.DisplayInConsole();
                 Console.WriteLine(new string('-', 60));
             }
 
@@ -20,24 +23,16 @@ namespace ConsoleTesting
 
         }
 
-        private static List<ITeam> GetTeams()
+        private static List<Squad> GetTeams()
         {
-            DBManager db = new DBManager();
-            List<ITeam> teams = new List<ITeam>
+            List<Squad> teams = new List<Squad>
             {
-                new GermanTeam(db),
-                new SovietTeam(db)
+                new GermanSquad(),
+                new SovietSquad()
             };
 
             return teams;
         }
 
-        private static void DisplayArmyInfo(List<IWarItem> army)
-        {
-            foreach (ISoldier soldier in army)
-            {
-                Console.WriteLine($"{soldier.Rank} {soldier.Name} - {soldier.Weapon.Title} [{soldier.Health}]");
-            }
-        }
     }
 }

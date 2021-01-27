@@ -7,11 +7,12 @@ namespace Logics
 {
     public class DBManager
     {
-        public List<string> GermanNames { get; } = new List<string>();
-        public List<string> GermanLastNames { get; } = new List<string>();
-        public List<string> USSRNames { get; } = new List<string>();
-        public List<string> USSRLastNames { get; } = new List<string>();
         private readonly SqlConnection connection;
+        public static List<string> GermanNames { get; } = new List<string>();
+        public static List<string> GermanLastNames { get; } = new List<string>();
+        public static List<string> USSRNames { get; } = new List<string>();
+        public static List<string> USSRLastNames { get; } = new List<string>();
+        
         public DBManager()
         {
             connection = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BattleAppDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
@@ -20,7 +21,7 @@ namespace Logics
 
             GetLastNames();
         }
-        private void GetNames()
+        public void GetNames()
         {
             try
             {
@@ -49,7 +50,7 @@ namespace Logics
             }
         }
 
-        private void GetLastNames()
+        public void GetLastNames()
         {
             try
             {
